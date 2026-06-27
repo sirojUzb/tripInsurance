@@ -8,6 +8,112 @@ const REVIEW_EN =
 export const translations = {
   ru: {
     breadcrumb: "Главная",
+    schengen: {
+      breadcrumb: "Шенген",
+      title: "Медицинская страховка для Шенгенской визы",
+      badges: ["Лучшие клиники", "Помощь 24/7", "Подходит для визы"],
+      who: {
+        title: "Кому нужна медицинская страховка для Шенгена",
+        intro:
+          "Страховка понадобится, если вы собираетесь в одну или несколько стран шенгенской зоны: Австрия, Бельгия, Чешская Республика, Дания, Эстония, Финляндия, Франция, Германия, Греция, Венгрия, Исландия, Испания, Италия, Латвия, Литва, Лихтенштейн, Люксембург, Мальта, Нидерланды, Норвегия, Польша, Португалия, Словакия, Словения, Швеция, Швейцария. Tripinsurance – это компания, где вы можете оформить и купить медицинскую туристическую страховку для шенгенской визы онлайн. Полисы нашей компании соответствуют всем визовым нормам и стандартам.",
+        listTitle: "Почему оформление полиса обязательно:",
+        bullets: [
+          "По требованию визового законодательства, иностранные граждане, въезжающие на территорию стран шенгенской зоны, должны иметь страховку.",
+          "Если зайдете на сайт консульства любой из стран-участниц шенгенского соглашения, то в перечне документов для получения визы будет указана медицинская страховка.",
+          "Если вы получили мультивизу, то обратите внимание, что страховка обязательно нужна для каждой поездки.",
+          "Таможенные службы при пересечении границы могут запрашивать не только паспорт с визой, но и страховку. Такие случаи бывают на границах Польши, Финляндии, Чехии.",
+          "Но сделать мед. страховку для шенгенской визы онлайн в первую очередь необходимо для своевременного получения медицинской помощи.",
+        ],
+      },
+      benefits: {
+        title: "Преимущества обращения в нашу компанию",
+        items: [
+          {
+            title: "Надежная сервисная компания",
+            text: "Клиентов обслуживает наш собственный сервисный центр Tripinsurance. Мы отслеживаем качество оказанной медицинской помощи, отбираем лучшие клиники для наших клиентов.",
+          },
+          {
+            title: "Для активных путешественников",
+            text: "Страховка может быть краткосрочной, для нескольких длительных поездок (до 91 дня) в течение года и для путешествий, которые длятся целый год. Если вы часто путешествуете, то годовые страховки помогут сэкономить.",
+          },
+          {
+            title: "Аккредитация страховой компании",
+            text: "Некоторые европейские консульства (например, Финляндии, Австрии) создают списки аккредитованных компаний. Компания Tripinsurance оформляет полисы от имени страховой компании, которая аккредитована всеми дипломатическими представительствами.",
+          },
+          {
+            title: "Без франшизы",
+            text: "Некоторые компании предлагают купить страховку для Шенгена онлайн дешево, вводя франшизу (неоплачиваемую часть расходов) в полис. Мы предлагаем программы без франшизы. У наших клиентов нет дополнительных затрат, если полис куплен до начала поездки.",
+          },
+        ],
+      },
+    },
+    partners: {
+      breadcrumb: "Партнерам",
+      title: "Партнерская программа",
+      subtitle: "Продажа туристических страховок для сайтов, турфирм, агентств",
+      register: "Регистрация онлайн",
+      loginPrefix: "или войти ",
+      loginLink: "здесь",
+      offer: {
+        title: "Что мы предлагаем?",
+        items: [
+          {
+            title: "Страхование путешественников",
+            sub: "Страховка для получения визы и не только",
+          },
+          {
+            title: "Страхование отмены поездки",
+            sub: "Компенсация, если срывается поездка",
+          },
+          {
+            title: "Продукт Лайт для профи",
+            sub: "Специальный продукт для турагентов",
+          },
+        ],
+      },
+      how: {
+        title: "Как это работает?",
+        steps: [
+          "Зарегистрируйтесь и получите доступ к личному кабинету",
+          "Выберите способ интеграции",
+          "Зарабатывайте до 25% от стоимости полиса",
+        ],
+      },
+      widget: {
+        title: "Размещение виджета",
+        desc: "Виджет – это графический элемент интерфейса, который позволит перемещаться с Вашего сайта на наш портал. Также он проинформирует пользователей о рейтинге и наличии отзывов.",
+        calcTitle: "Рассчитайте стоимость страховки",
+        reviewsTitle: "Отзывы клиентов",
+        allReviews: "Все отзывы",
+        reviewText:
+          "Много лет пользуюсь предпочитаю другим компаниям! Оперативный чат, посмотрим как будет дальше! Пока все отлично)",
+        reviewName: "Василий Петров",
+        sample: "Образец полиса страхования",
+        terms: "Условия страхования",
+        choose: "Выбрать",
+        add: "Добавить",
+        features: [
+          "Медицинская помощь",
+          "Стоматологическая помощь",
+          "Визит третьего лица",
+          "Досрочное возвращение домой",
+          "Задержка авиарейса",
+          "Юридическая помощь",
+          "Гражданская ответственность",
+          "Утрата или повреждение багажа",
+          "Несчастный случай",
+          "Активный отдых",
+        ],
+        plans: [
+          { name: "Базовый", note: "Минимальная страховка, отвечающая шенгенским правилам. + COVID-19" },
+          { name: "Стандарт", note: "+ увеличен лимит + расширенное покрытие" },
+          { name: "Базовый", note: "+ максимальный лимит + гражд. ответственность + багаж" },
+          { name: "Базовый", note: "Годовая страховка, если планируете больше 2-3 поездок" },
+        ],
+        promo1: "Не забудь про страховку",
+        promo2: "от 1 387₽",
+      },
+    },
     logoSuffix: "страхование",
     nav: {
       products: "Продукты",
@@ -150,6 +256,112 @@ export const translations = {
 
   en: {
     breadcrumb: "Home",
+    schengen: {
+      breadcrumb: "Schengen",
+      title: "Medical insurance for a Schengen visa",
+      badges: ["Best clinics", "24/7 support", "Valid for a visa"],
+      who: {
+        title: "Who needs medical insurance for Schengen",
+        intro:
+          "You'll need insurance if you're travelling to one or more Schengen-area countries: Austria, Belgium, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Spain, Italy, Latvia, Lithuania, Liechtenstein, Luxembourg, Malta, Netherlands, Norway, Poland, Portugal, Slovakia, Slovenia, Sweden, Switzerland. Tripinsurance is a company where you can arrange and buy medical travel insurance for a Schengen visa online. Our policies comply with all visa requirements and standards.",
+        listTitle: "Why a policy is mandatory:",
+        bullets: [
+          "Under visa law, foreign nationals entering the Schengen area are required to have insurance.",
+          "If you visit the consulate website of any Schengen member country, medical insurance will be listed among the documents required to obtain a visa.",
+          "If you have a multiple-entry visa, note that insurance is required for every trip.",
+          "When crossing the border, customs services may request not only your passport with a visa but also your insurance. This happens at the borders of Poland, Finland and Czechia.",
+          "But above all, getting medical insurance for a Schengen visa online is necessary to receive timely medical care.",
+        ],
+      },
+      benefits: {
+        title: "Advantages of choosing our company",
+        items: [
+          {
+            title: "Reliable service company",
+            text: "Clients are served by our own Tripinsurance service center. We monitor the quality of medical care provided and select the best clinics for our clients.",
+          },
+          {
+            title: "For active travelers",
+            text: "Insurance can be short-term, for several long trips (up to 91 days) during the year, or for journeys lasting a whole year. If you travel often, annual policies will help you save.",
+          },
+          {
+            title: "Accredited insurance company",
+            text: "Some European consulates (for example, Finland and Austria) maintain lists of accredited companies. Tripinsurance issues policies on behalf of an insurance company accredited by all diplomatic missions.",
+          },
+          {
+            title: "No deductible",
+            text: "Some companies offer cheap Schengen insurance online by adding a deductible (a non-reimbursable portion of costs) to the policy. We offer programs without a deductible. Our clients have no extra costs if the policy is bought before the trip starts.",
+          },
+        ],
+      },
+    },
+    partners: {
+      breadcrumb: "Partners",
+      title: "Partner program",
+      subtitle: "Selling travel insurance for websites, travel companies and agencies",
+      register: "Register online",
+      loginPrefix: "or log in ",
+      loginLink: "here",
+      offer: {
+        title: "What we offer?",
+        items: [
+          {
+            title: "Travel insurance",
+            sub: "Insurance for getting a visa and more",
+          },
+          {
+            title: "Trip cancellation insurance",
+            sub: "Compensation if your trip falls through",
+          },
+          {
+            title: "Light product for pros",
+            sub: "A special product for travel agents",
+          },
+        ],
+      },
+      how: {
+        title: "How does it work?",
+        steps: [
+          "Register and get access to your personal account",
+          "Choose an integration method",
+          "Earn up to 25% of the policy price",
+        ],
+      },
+      widget: {
+        title: "Widget placement",
+        desc: "A widget is a graphical interface element that lets users move from your website to our portal. It also informs users about the rating and available reviews.",
+        calcTitle: "Calculate the insurance cost",
+        reviewsTitle: "Customer reviews",
+        allReviews: "All reviews",
+        reviewText:
+          "I've been using it for years, I prefer it to other companies! Responsive chat, let's see how it goes! So far everything is great)",
+        reviewName: "Vasily Petrov",
+        sample: "Sample insurance policy",
+        terms: "Insurance terms",
+        choose: "Choose",
+        add: "Add",
+        features: [
+          "Medical care",
+          "Dental care",
+          "Third-party visit",
+          "Early return home",
+          "Flight delay",
+          "Legal assistance",
+          "Civil liability",
+          "Loss or damage of luggage",
+          "Accident",
+          "Active recreation",
+        ],
+        plans: [
+          { name: "Basic", note: "Minimum insurance that meets Schengen rules. + COVID-19" },
+          { name: "Standard", note: "+ increased limit + extended coverage" },
+          { name: "Basic", note: "+ maximum limit + civil liability + luggage" },
+          { name: "Basic", note: "Annual insurance if you plan more than 2-3 trips" },
+        ],
+        promo1: "Don't forget about insurance",
+        promo2: "from 1,387₽",
+      },
+    },
     logoSuffix: "insurance",
     nav: {
       products: "Products",

@@ -6,14 +6,15 @@ import { useLang } from "../i18n.jsx";
 // Ключи групп пассажиров — совпадают с состоянием counts
 const PASSENGER_KEYS = ["kidsBaby", "kids", "adults", "seniors"];
 
-function Hero() {
+function Hero({ title }) {
   const { t } = useLang();
+  const heroTitle = title ?? t.hero.title;
   const COUNTRIES = t.hero.countries;
   const peopleLabel = t.hero.peopleLabel;
 
   const [place, setPlace] = useState("");
-  const [dateFrom, setDateFrom] = useState("05.03.2023");
-  const [dateTo, setDateTo] = useState("05.03.2023");
+  const [dateFrom, setDateFrom] = useState("01.01.2026");
+  const [dateTo, setDateTo] = useState("01.01.2026");
 
   const [openPlace, setOpenPlace] = useState(false);
   const [openPeople, setOpenPeople] = useState(false);
@@ -112,7 +113,7 @@ function Hero() {
       {/* Контент */}
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 pb-16 text-center">
         <h1 className="mb-2.5 text-3xl font-bold drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)] md:text-[38px]">
-          {t.hero.title}
+          {heroTitle}
         </h1>
         <p className="mb-8 text-lg font-normal drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)] md:text-[19px]">
           {t.hero.subtitle}

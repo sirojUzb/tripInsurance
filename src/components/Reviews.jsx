@@ -3,12 +3,20 @@ import { useLang } from "../i18n.jsx";
 
 const DOTS = 4;
 
+// Пол по позиции (совпадает для RU и EN списков имён)
+const GENDERS = ["m", "f", "m", "f", "m", "f", "m", "f"];
+const PHOTOS = {
+  m: "/images/feedback-photo.png",
+  f: "/images/feedback-photo-woman.jpg",
+};
+
 function Reviews() {
   const { t } = useLang();
-  const REVIEWS = t.reviews.names.map((name) => ({
+  const REVIEWS = t.reviews.names.map((name, i) => ({
     name,
     date: "05/02/2023",
     text: t.reviews.text,
+    photo: PHOTOS[GENDERS[i % GENDERS.length]],
   }));
 
   const trackRef = useRef(null);
@@ -65,7 +73,7 @@ function Reviews() {
               {/* Автор */}
               <div className="flex items-center gap-2.5">
                 <img
-                  src="/images/feedback-photo.png"
+                  src={review.photo}
                   alt={review.name}
                   className="h-8 w-8 rounded-full object-cover"
                 />

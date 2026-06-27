@@ -1,12 +1,23 @@
 import { useState, useRef, useEffect } from "react";
 import { useLang } from "../i18n.jsx";
+import { useRouter } from "../router.jsx";
+
+// Маршруты пунктов меню «Продукты» по позиции (совпадают для RU и EN)
+const PRODUCT_ROUTES = ["/schengen", "#", "#", "#"];
 
 function Navbar() {
   const { t, lang, setLang } = useLang();
+  const { navigate } = useRouter();
   const [openProducts, setOpenProducts] = useState(false);
   const productsRef = useRef(null);
 
   const products = t.nav.productItems;
+
+  const handleNav = (e, to) => {
+    e.preventDefault();
+    setOpenProducts(false);
+    if (to && to !== "#") navigate(to);
+  };
 
   // Закрытие при клике вне меню
   useEffect(() => {
@@ -23,7 +34,11 @@ function Navbar() {
     <header className="px-6 py-5">
       <div className="mx-auto grid w-full max-w-3xl grid-cols-[1fr_auto_1fr] items-center gap-6">
         {/* Логотип */}
-        <a href="#" className="flex items-center gap-2 justify-self-start no-underline">
+        <a
+          href="/"
+          onClick={(e) => handleNav(e, "/")}
+          className="flex items-center gap-2 justify-self-start no-underline"
+        >
           <img
             src="/images/tick-icon.svg"
             alt=""
@@ -63,10 +78,11 @@ function Navbar() {
 
             {openProducts && (
               <div className="absolute left-0 top-full z-20 mt-3 w-60 overflow-hidden rounded-md shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
-                {products.map((item) => (
+                {products.map((item, i) => (
                   <a
                     key={item}
-                    href="#"
+                    href={PRODUCT_ROUTES[i] || "#"}
+                    onClick={(e) => handleNav(e, PRODUCT_ROUTES[i])}
                     className="block bg-purple-brand px-4 py-2.5 text-[13px] font-medium text-white transition-colors hover:bg-purple-brand-dark"
                   >
                     {item}
@@ -83,7 +99,8 @@ function Navbar() {
             {t.nav.reviews}
           </a>
           <a
-            href="#"
+            href="/partners"
+            onClick={(e) => handleNav(e, "/partners")}
             className="text-[15px] font-medium text-neutral-100 transition-colors hover:text-white hover:opacity-85"
           >
             {t.nav.partners}
