@@ -1,11 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-
-const MONTHS = [
-  "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
-  "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь",
-];
-
-const WEEKDAYS = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+import { useLang } from "../i18n.jsx";
 
 function parseDate(str) {
   const [d, m, y] = (str || "").split(".").map(Number);
@@ -31,6 +25,9 @@ function sameDay(a, b) {
 }
 
 function DateField({ value, onChange, align = "left" }) {
+  const { t } = useLang();
+  const MONTHS = t.date.months;
+  const WEEKDAYS = t.date.weekdays;
   const [open, setOpen] = useState(false);
   const selected = parseDate(value);
   const [view, setView] = useState(selected || new Date());
@@ -91,7 +88,7 @@ function DateField({ value, onChange, align = "left" }) {
               type="button"
               onClick={() => changeMonth(-1)}
               className="flex h-8 w-8 items-center justify-center rounded-md text-neutral-600 transition-colors hover:bg-purple-brand/10 hover:text-purple-brand"
-              aria-label="Предыдущий месяц"
+              aria-label={t.date.prevMonth}
             >
               ‹
             </button>
@@ -102,7 +99,7 @@ function DateField({ value, onChange, align = "left" }) {
               type="button"
               onClick={() => changeMonth(1)}
               className="flex h-8 w-8 items-center justify-center rounded-md text-neutral-600 transition-colors hover:bg-purple-brand/10 hover:text-purple-brand"
-              aria-label="Следующий месяц"
+              aria-label={t.date.nextMonth}
             >
               ›
             </button>

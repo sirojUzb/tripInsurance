@@ -1,22 +1,16 @@
 import { useRef, useState } from "react";
-
-const REVIEW_TEXT =
-  "Много лет пользуюсь, предпочитаю другим компаниям! Оперативный чат, посмотрим как будет дальше! Пока все отлично)";
-
-const REVIEWS = [
-  { name: "Василий Петров", date: "05/02/2023", text: REVIEW_TEXT },
-  { name: "Анна Смирнова", date: "05/02/2023", text: REVIEW_TEXT },
-  { name: "Игорь Кузнецов", date: "05/02/2023", text: REVIEW_TEXT },
-  { name: "Елена Соколова", date: "05/02/2023", text: REVIEW_TEXT },
-  { name: "Дмитрий Орлов", date: "05/02/2023", text: REVIEW_TEXT },
-  { name: "Мария Волкова", date: "05/02/2023", text: REVIEW_TEXT },
-  { name: "Сергей Морозов", date: "05/02/2023", text: REVIEW_TEXT },
-  { name: "Ольга Новикова", date: "05/02/2023", text: REVIEW_TEXT },
-];
+import { useLang } from "../i18n.jsx";
 
 const DOTS = 4;
 
 function Reviews() {
+  const { t } = useLang();
+  const REVIEWS = t.reviews.names.map((name) => ({
+    name,
+    date: "05/02/2023",
+    text: t.reviews.text,
+  }));
+
   const trackRef = useRef(null);
   const [active, setActive] = useState(0);
 
@@ -39,7 +33,7 @@ function Reviews() {
     <section className="bg-white pb-20 md:pb-28">
       <div className="mx-auto max-w-5xl px-6">
         <h2 className="mb-12 text-center text-2xl font-bold text-neutral-900 md:text-[28px]">
-          Отзывы
+          {t.reviews.title}
         </h2>
 
         {/* Карусель */}
@@ -51,7 +45,7 @@ function Reviews() {
           {REVIEWS.map((review, i) => (
             <article
               key={i}
-              className="flex w-[280px] shrink-0 snap-start flex-col rounded-xl bg-purple-brand/8 p-5"
+              className="flex w-70 shrink-0 snap-start flex-col rounded-xl bg-purple-brand/8 p-5"
             >
               {/* Звёзды + дата */}
               <div className="mb-3 flex items-center justify-between">
@@ -90,7 +84,7 @@ function Reviews() {
               key={i}
               type="button"
               onClick={() => goToDot(i)}
-              aria-label={`Слайд ${i + 1}`}
+              aria-label={`${t.reviews.slideAlt} ${i + 1}`}
               className={`h-1.5 rounded-full transition-all ${
                 active === i
                   ? "w-4 bg-purple-brand"

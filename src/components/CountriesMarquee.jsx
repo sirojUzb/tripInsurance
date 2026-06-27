@@ -1,12 +1,4 @@
-const ROW_ONE = [
-  "Великобритания", "Германия", "Франция", "Чехия", "Дания", "Финляндия",
-  "Испания", "Италия", "Греция", "Австрия", "Швейцария", "Норвегия",
-];
-
-const ROW_TWO = [
-  "Турция", "ОАЭ", "Таиланд", "Египет", "Грузия", "Армения",
-  "Черногория", "Кипр", "Болгария", "Венгрия", "Польша", "Хорватия",
-];
+import { useLang } from "../i18n.jsx";
 
 function Row({ items, direction }) {
   // Дублируем список, чтобы прокрутка была бесшовной
@@ -28,10 +20,11 @@ function Row({ items, direction }) {
 }
 
 function CountriesMarquee() {
+  const { t } = useLang();
   return (
     <section className="bg-white pb-20 md:pb-28">
-      <Row items={ROW_ONE} direction="marquee-left" />
-      <Row items={ROW_TWO} direction="marquee-right" />
+      <Row items={t.marquee.rowOne} direction="marquee-left" />
+      <Row items={t.marquee.rowTwo} direction="marquee-right" />
     </section>
   );
 }

@@ -1,57 +1,16 @@
 import { useState, useRef, useEffect } from "react";
 import Navbar from "./Navbar.jsx";
 import DateField from "./DateField.jsx";
+import { useLang } from "../i18n.jsx";
 
-const COUNTRIES = [
-  "Абхазия", "Австралия", "Австрия", "Азербайджан", "Албания", "Алжир",
-  "Ангола", "Андорра", "Аргентина", "Армения", "Афганистан", "Багамы",
-  "Бангладеш", "Барбадос", "Бахрейн", "Беларусь", "Белиз", "Бельгия",
-  "Бенин", "Болгария", "Боливия", "Босния и Герцеговина", "Ботсвана",
-  "Бразилия", "Бруней", "Буркина-Фасо", "Бурунди", "Бутан", "Вануату",
-  "Великобритания", "Венгрия", "Венесуэла", "Вьетнам", "Габон", "Гаити",
-  "Гайана", "Гамбия", "Гана", "Гватемала", "Гвинея", "Германия", "Гондурас",
-  "Гренада", "Греция", "Грузия", "Дания", "Джибути", "Доминикана", "Египет",
-  "Замбия", "Зимбабве", "Израиль", "Индия", "Индонезия", "Иордания", "Ирак",
-  "Иран", "Ирландия", "Исландия", "Испания", "Италия", "Йемен", "Кабо-Верде",
-  "Казахстан", "Камбоджа", "Камерун", "Канада", "Катар", "Кения", "Кипр",
-  "Киргизия", "Китай", "Колумбия", "Коморы", "Конго", "Коста-Рика",
-  "Куба", "Кувейт", "Лаос", "Латвия", "Лесото", "Либерия", "Ливан", "Ливия",
-  "Литва", "Лихтенштейн", "Люксембург", "Маврикий", "Мавритания",
-  "Мадагаскар", "Малави", "Малайзия", "Мали", "Мальдивы", "Мальта",
-  "Марокко", "Мексика", "Мозамбик", "Молдова", "Монако", "Монголия",
-  "Мьянма", "Намибия", "Непал", "Нигер", "Нигерия", "Нидерланды",
-  "Никарагуа", "Новая Зеландия", "Норвегия", "ОАЭ", "Оман", "Пакистан",
-  "Панама", "Папуа — Новая Гвинея", "Парагвай", "Перу", "Польша",
-  "Португалия", "Россия", "Руанда", "Румыния", "Сальвадор", "Самоа",
-  "Сан-Марино", "Саудовская Аравия", "Северная Корея", "Северная Македония",
-  "Сейшелы", "Сенегал", "Сербия", "Сингапур", "Сирия", "Словакия",
-  "Словения", "Сомали", "Судан", "Суринам", "США", "Сьерра-Леоне",
-  "Таджикистан", "Таиланд", "Танзания", "Того", "Тонга", "Тринидад и Тобаго",
-  "Тунис", "Туркменистан", "Турция", "Уганда", "Узбекистан", "Украина",
-  "Уругвай", "Фиджи", "Филиппины", "Финляндия", "Франция", "Хорватия",
-  "Чад", "Черногория", "Чехия", "Чили", "Швейцария", "Швеция", "Шри-Ланка",
-  "Эквадор", "Экваториальная Гвинея", "Эритрея", "Эсватини", "Эстония",
-  "Эфиопия", "ЮАР", "Южная Корея", "Южный Судан", "Ямайка", "Япония",
-];
-
-const PASSENGER_GROUPS = [
-  { key: "kidsBaby", title: "Дети до 3-х лет", note: "" },
-  { key: "kids", title: "Дети", note: "от 4 до 17 лет" },
-  { key: "adults", title: "Взрослые", note: "от 18 до 68 лет" },
-  { key: "seniors", title: "Взрослые", note: "от 70 до 79 лет" },
-];
-
-// Склонение слова «человек»
-function peopleLabel(count) {
-  const mod10 = count % 10;
-  const mod100 = count % 100;
-  if (mod10 === 1 && mod100 !== 11) return `${count} человек`;
-  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 10 || mod100 >= 20))
-    return `${count} человека`;
-  return `${count} человек`;
-}
+// Ключи групп пассажиров — совпадают с состоянием counts
+const PASSENGER_KEYS = ["kidsBaby", "kids", "adults", "seniors"];
 
 function Hero() {
+  const { t } = useLang();
+  const COUNTRIES = t.hero.countries;
+  const peopleLabel = t.hero.peopleLabel;
+
   const [place, setPlace] = useState("");
   const [dateFrom, setDateFrom] = useState("05.03.2023");
   const [dateTo, setDateTo] = useState("05.03.2023");
@@ -153,10 +112,10 @@ function Hero() {
       {/* Контент */}
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 pb-16 text-center">
         <h1 className="mb-2.5 text-3xl font-bold drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)] md:text-[38px]">
-          Страхование путешественников
+          {t.hero.title}
         </h1>
         <p className="mb-8 text-lg font-normal drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)] md:text-[19px]">
-          Полис, который действительно работает
+          {t.hero.subtitle}
         </p>
 
         {/* Поиск */}
@@ -177,7 +136,7 @@ function Hero() {
                 }}
                 onFocus={() => setOpenPlace(true)}
                 onKeyDown={handlePlaceKeyDown}
-                placeholder="Куда едем?"
+                placeholder={t.hero.where}
                 className="w-full border-none bg-transparent text-[15px] text-neutral-800 outline-none placeholder:text-neutral-400"
               />
             </div>
@@ -238,39 +197,42 @@ function Hero() {
 
             {openPeople && (
               <div className="absolute right-0 top-[calc(100%+12px)] z-30 w-72 rounded-lg bg-white p-4 text-left shadow-[0_10px_30px_rgba(0,0,0,0.2)] ring-1 ring-black/5">
-                {PASSENGER_GROUPS.map((group) => (
-                  <div
-                    key={group.key}
-                    className="flex items-center justify-between py-2.5"
-                  >
-                    <div>
-                      <p className="text-[15px] text-neutral-800">{group.title}</p>
-                      {group.note && (
-                        <p className="text-xs text-neutral-400">{group.note}</p>
-                      )}
+                {t.hero.passengerGroups.map((group, index) => {
+                  const key = PASSENGER_KEYS[index];
+                  return (
+                    <div
+                      key={key}
+                      className="flex items-center justify-between py-2.5"
+                    >
+                      <div>
+                        <p className="text-[15px] text-neutral-800">{group.title}</p>
+                        {group.note && (
+                          <p className="text-xs text-neutral-400">{group.note}</p>
+                        )}
+                      </div>
+                      <div className="flex items-center gap-2.5">
+                        <button
+                          type="button"
+                          onClick={() => changeCount(key, -1)}
+                          disabled={counts[key] === 0}
+                          className="flex h-7 w-7 items-center justify-center rounded-md border border-neutral-300 text-neutral-600 transition-colors hover:border-purple-brand hover:text-purple-brand disabled:cursor-not-allowed disabled:opacity-40"
+                        >
+                          −
+                        </button>
+                        <span className="w-4 text-center text-[15px] text-neutral-800">
+                          {counts[key]}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => changeCount(key, 1)}
+                          className="flex h-7 w-7 items-center justify-center rounded-md border border-neutral-300 text-neutral-600 transition-colors hover:border-purple-brand hover:text-purple-brand"
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2.5">
-                      <button
-                        type="button"
-                        onClick={() => changeCount(group.key, -1)}
-                        disabled={counts[group.key] === 0}
-                        className="flex h-7 w-7 items-center justify-center rounded-md border border-neutral-300 text-neutral-600 transition-colors hover:border-purple-brand hover:text-purple-brand disabled:cursor-not-allowed disabled:opacity-40"
-                      >
-                        −
-                      </button>
-                      <span className="w-4 text-center text-[15px] text-neutral-800">
-                        {counts[group.key]}
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => changeCount(group.key, 1)}
-                        className="flex h-7 w-7 items-center justify-center rounded-md border border-neutral-300 text-neutral-600 transition-colors hover:border-purple-brand hover:text-purple-brand"
-                      >
-                        +
-                      </button>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
           </div>
@@ -281,7 +243,7 @@ function Hero() {
           onClick={handleSubmit}
           className="mt-6 cursor-pointer rounded-lg bg-purple-brand px-8 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-purple-brand-dark active:translate-y-px"
         >
-          Узнать стоимость
+          {t.hero.getQuote}
         </button>
       </div>
     </section>

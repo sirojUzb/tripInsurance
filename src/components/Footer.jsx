@@ -1,27 +1,4 @@
-const COLUMNS = [
-  {
-    title: "Информационный центр",
-    links: ["О нас", "Отзывы", "Партнерам"],
-  },
-  {
-    title: "Продукты",
-    links: [
-      "Страховка для Шенгена",
-      "Страховка для России",
-      "Страховка в страны",
-      "Горнолыжная страховка",
-      "Годовая страховка",
-    ],
-  },
-  {
-    title: "Документы",
-    links: [
-      "Пользовательское соглашение",
-      "Политика обработки данных",
-      "Политика информационной безопасности",
-    ],
-  },
-];
+import { useLang } from "../i18n.jsx";
 
 const SOCIALS = [
   { src: "/images/1.youtube.svg", label: "YouTube" },
@@ -35,10 +12,11 @@ const SOCIALS = [
 ];
 
 function Footer() {
+  const { t } = useLang();
   return (
     <footer className="border-t border-neutral-200 bg-white py-14">
       <div className="mx-auto grid max-w-5xl grid-cols-2 gap-10 px-6 md:grid-cols-4">
-        {COLUMNS.map((col) => (
+        {t.footer.columns.map((col) => (
           <div key={col.title}>
             <h3 className="mb-4 text-[15px] font-bold text-neutral-900">
               {col.title}
@@ -61,7 +39,7 @@ function Footer() {
         {/* Соцсети */}
         <div>
           <h3 className="mb-4 text-[15px] font-bold text-neutral-900">
-            Связаться с нами
+            {t.footer.contact}
           </h3>
           <div className="grid grid-cols-4 gap-3">
             {SOCIALS.map((social) => (
